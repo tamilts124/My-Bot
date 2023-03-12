@@ -6,8 +6,8 @@ def codeGenerator(version, question):
         answer =requests.post('https://www.useblackbox.io/autocomplete'+version, headers={
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0',
             'Content-Type': 'application/json'
-            }, json={"userId":"","textInput":question}, timeout=30).json()
-    except requests.exceptions.ReadTimeout: return
+            }, json={"userId":"","textInput":question}, timeout=15).json()
+    except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectionError): return
     return answer
 
 
